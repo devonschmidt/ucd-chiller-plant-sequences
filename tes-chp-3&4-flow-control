@@ -1,0 +1,27 @@
+UC DAVIS TES CHP 3 & 4 FLOW CONTROL
+
+Chiller Start-Up
+  If either chiller is active both pumps should be ON.
+  Upon start of lead chiller CH-3, or CH-4, the initial flow rate setpoint shall be set to 4,500 gpm for 15 minutes. 
+  Upon start of lag chiller CH-3, or CH-4, the pump speed shall be held constant for 15 minutes.
+
+Operation if tank is not fully charged
+  If the average of top two tank sensors is > 46F (ADJ), then:
+  Perform the following trim and respond code every 30 Sec:
+  If average of active compressors % RLA is less than 95% increase flow set-point by 100 GPM
+  If average of active compressors % RLA is greater than 98% decrease flow set-point by 100 GPM
+
+Operation if tank is full
+  While the average temperature of the top two tank sensors is <= 46 F, the flow setpoint shall then be reset using the following logic every 30 seconds:
+    Comments: this line functions to avoid overloading chillers
+  
+  If average %RLA of active compressors is > 98%, decrease flow set-point by 100 gpm
+    Comments: this line functions to load up chillers by having the chiller take on load currently being served by tank
+  
+  If average %RLA of active compressors is < 95% and tank discharge rate > 500 gpm (ADJ), increase flow set-point by 100 gpm 
+
+Min flow shall never fall below 1,600 GPM
+Max flow shall not go above 8,500 GPM
+
+Comments: this assumes that the tank discharge flow rate responds appropriately and will decrease or increase flow to compensate for changes in TES CH3 & CH4 flow. 
+Comments: Care should be taken to make sure the sign (charging or discharging) for the tank flow rate is accurate and that the charging flow rate is never used. 
