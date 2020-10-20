@@ -1,0 +1,26 @@
+Campus CHWST Reset Program
+
+The campus CHWST setpoint is interpolated linearly from the maximum setpoint (46 F) at the minimum outside air temperature (50 F) to the minimum setpoint (39 F) at the maximum outside air temperature (100 F). 
+
+If TES is charging, TES CH-4 CHWST SP shall remain at minimum 39 F. 
+
+If TES is Discharging:
+
+  If TES 4 is OFF, then the leaving water temperature of TES CH 3 shall be reset according to the following logic every 5 minutes: 
+    If the campus supply temperature (TT 7002) < campus CHWST setpoint - 0.5 F, then TT 7301 SP will be increased by 0.5 F 
+    If the temperature (TT 7002) > campus CHWST setpoint + 0.5 F, then the TT 7301 SP will be decreased by 0.5 F
+
+  If TES 4 is ON, then the leaving water temperature of TES CH 4 (TT 7401) shall be reset according to the following logic every 5 minutes: 
+    If the campus supply temperature (TT 7002) < campus CHWST setpoint - 0.5 F, then TT 7401 SP will be increased by 0.5 F 
+    If the temperature (TT 7002) > campus CHWST setpoint + 0.5 F, then the TT 7401 SP will be decreased by 0.5 F 
+
+  If TES 3 and 4 are ON, then TES 3 CHWST SP (TT 7301) shall be set according to:
+    TES 3 CHWST SP (TT 7301) = TES 3 EWT - (TES 3 EWT - TES 4 LWT)/2
+    TES 3 CHWST SP (TT7301) must always be greater than campus CHWST SP + 6 F
+    Rate of change for TES 3 CHWST shall be no greater than 0.5 F every 5 min
+
+  If both TES CH3 and TES CH4 are OFF: 
+    If campus CHWST (TT 7002) < campus CHWST SP – 0.5 F, then CHP3 shall be commanded on, valves IV 7322 and IV 7424 shall close, and valves IV 7425 and IV 7323 shall open. CHP3 speed will modulate via a forward acting PID loop to maintain campus CHWST (TT 7002) at campus CHWST SP. 
+    If campus CHWST (TT 7002) > campus CHWST SP + 0.5 F, then CHP 3 and CHP 4 shall be off. 
+    If CHP3 speed is at or greater than 85% for five minutes, then CHP4 shall stage on. CHP4 will modulate according to the same PID loop. CHP4 shall stage off if both pumps are at or below 35% speed for 5 minutes. 
+    If CHWST SP is 39 F, close IV 7425. 
