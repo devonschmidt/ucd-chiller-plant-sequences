@@ -1,8 +1,8 @@
 Upon start up, the flow setpoint shall be 4,500 gpm. 
 
-If the transmitter with the greatest deviation from setpoint has a deviation greater than 2 PSID, decrease flow setpoint by 100 gpm every 3 minutes. 
+If the active differential pressure is > DP SP + 2, decrease flow setpoint by 100 gpm every adjustable interval (3 minutes). 
 
-If the transmitter with the greatest deviation between setpoint and value among active campus DP transmitters is less than -2 PSID, increase flow setpoint by 100 gpm every 3 minutes
+If the active differential pressure is < DP SP + 1, increase flow setpoint by 100 gpm every adjustable interval (3 minutes).
 
 Min: Number of active chillers * x minimum flow (2,000 gpm)
 
