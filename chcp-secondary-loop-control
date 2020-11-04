@@ -7,3 +7,6 @@ If the active differential pressure is < DP SP + 1, increase flow setpoint by 10
 Min: Number of active chillers * x minimum flow (2,000 gpm)
 
 Max: The setpoint is a rolling average of the chiller flow rates (FIT2150 + FIT2350 + FIT3150 + FIT3350)
+
+
+TESTING
